@@ -3,6 +3,7 @@ services:
   web-app:
     build:
       context: .
+    container_name: hakus_rails_app
     volumes:
       - ./:/myapp
       - node_modules_volume:/myapp/node_modules
@@ -14,6 +15,7 @@ services:
       - web-db
   web-db:
     image: mysql:8.0
+    container_name: hakus_rails_db
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: web-app-db
@@ -26,6 +28,6 @@ services:
       - web-db:/var/lib/mysql
 volumes:
   web-db:
-    name: web-db-data
+    name: hakus-rails-db
   node_modules_volume:
-    name: webpack_node_modules
+    name: hakus-rails-webpack-node-modules
